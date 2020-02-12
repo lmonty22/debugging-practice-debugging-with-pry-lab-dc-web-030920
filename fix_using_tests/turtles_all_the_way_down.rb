@@ -9,9 +9,18 @@ def turtles
 end
 
 def turtle_traits(turtles)
+new_array = []
+string_array = []
   turtles.map do |turtle|
-    turtle[:traits].each do |trait|
-      trait
+    turtle.each_pair do |attribute,value|
+      next unless attribute == :traits
+        if value.is_a? String
+          string_array << value
+          new_array << string_array
+        else
+        new_array << value
+        end
     end
   end
+  new_array
 end
